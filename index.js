@@ -60,14 +60,11 @@ function createTimeInEvent(object, datestamp) {
   }
   
  object.timeInEvents.push(timeEvent)
- console.log(object)
+//  console.log(object)
  return object
 }
 
 createTimeInEvent(bpRecord, "2014-02-28 1400")
-
-
-//NEXT CREATE TIMEOUT FUNCTION
 
 function createTimeOutEvent(object, datestamp) {
   let timeInfo = datestamp.split(' ')
@@ -81,27 +78,38 @@ function createTimeOutEvent(object, datestamp) {
   }
   
  object.timeOutEvents.push(timeEvent)
- console.log(object)
  return object
 }
 
+//NEXT CREATE hoursWorkedOnDate function
 
+// hoursWorkedOnDate
+//     Argument(s)
+//         An employee record Object
+//         A date of the form "YYYY-MM-DD"
+//     Returns
+//         Hours worked, an Integer
+//     Behavior
+//         Given a date, find the number of hours elapsed between that date's timeInEvent and timeOutEvent
 
+function hoursWorkedOnDate(object, date) {
+  let timeInDate = object.timeInEvents[0].date
+  let timeOutDate = object.timeOutEvents[0].date
+  let timeInHour = object.timeInEvents[0].hour
+  let timeOutHour = object.timeOutEvents[0].hour
+  let hoursWorked
 
-// createEmployeeRecord(dataEmployees)
+  if(timeInDate && timeOutDate === date){
+    hoursWorked = timeOutHour - timeInHour
+  } 
+  return hoursWorked / 100
+}
 
-/*Returns
-    JavaScript Object with keys: {
-    firstName:
-    familyName:
-    title:
-    payPerHour:
-    timeInEvents:
-    timeOutEvents:
-  }
-*/
+cRecord = createEmployeeRecord(["Julius", "Caesar", "General", 1000])
+updatedBpRecord = createTimeInEvent(cRecord, "0044-03-15 0900")
+updatedBpRecord = createTimeOutEvent(cRecord, "0044-03-15 1100")
+hoursWorkedOnDate(cRecord, "0044-03-15")
 
-//Initialize empty object
-//Iterate through each array
-//Map each element into correspoding Obj Key
-//
+//Take object
+//Check if object.timeIn AND timeOut are === date
+//If true let house =  object.timeOut.hour - object.timeIn.hour
