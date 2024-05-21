@@ -105,11 +105,34 @@ function hoursWorkedOnDate(object, date) {
   return hoursWorked / 100
 }
 
+
+
+//Take object
+//Check if object.timeIn && timeOut are === date
+//If true let house =  object.timeOut.hour - object.timeIn.hour
+
+//CREATE wagesEarnedOnDate function
+// Argument(s)
+// An employee record Object
+// A date of the form "YYYY-MM-DD"
+// Returns
+// Pay owed
+// Behavior
+// Using hoursWorkedOnDate, multiply the hours by the record's payRate to determine amount owed. Amount should be returned as a number.
+
+function wagesEarnedOnDate(object, date) {
+  let hours = hoursWorkedOnDate(object, date)
+  let wage = object.payPerHour
+  let totalEarned = hours * wage
+
+  return totalEarned
+}
+
 cRecord = createEmployeeRecord(["Julius", "Caesar", "General", 1000])
 updatedBpRecord = createTimeInEvent(cRecord, "0044-03-15 0900")
 updatedBpRecord = createTimeOutEvent(cRecord, "0044-03-15 1100")
-hoursWorkedOnDate(cRecord, "0044-03-15")
+wagesEarnedOnDate(cRecord, "0044-03-15")
 
-//Take object
-//Check if object.timeIn AND timeOut are === date
-//If true let house =  object.timeOut.hour - object.timeIn.hour
+// call hrsworked function
+// grab employee wage
+//return hrs * employee wage
