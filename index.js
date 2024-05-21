@@ -51,7 +51,8 @@ let bpRecord = createEmployeeRecord(["Byron", "Poodle", "Mascot", 3])
 function createTimeInEvent(object, datestamp) {
   let timeInfo = datestamp.split(' ')
   let date = timeInfo[0]
-  let hour = timeInfo[1]
+  let hour = parseInt(timeInfo[1], 10)
+
   let timeEvent = {
     type: 'TimeIn',
     date: date,
@@ -66,36 +67,24 @@ function createTimeInEvent(object, datestamp) {
 createTimeInEvent(bpRecord, "2014-02-28 1400")
 
 
+//NEXT CREATE TIMEOUT FUNCTION
 
+function createTimeOutEvent(object, datestamp) {
+  let timeInfo = datestamp.split(' ')
+  let date = timeInfo[0]
+  let hour = parseInt(timeInfo[1], 10)
 
+  let timeEvent = {
+    type: 'TimeOut',
+    date: date,
+    hour: hour
+  }
+  
+ object.timeOutEvents.push(timeEvent)
+ console.log(object)
+ return object
+}
 
-// function createEmployeeRecords(array) {
-//     return array.map(element => {
-//       let employeeObj = {
-      //   firstName: element[0],
-      //   familyName: element[1],
-      //   title: element[2],
-      //   payPerHour: element[3],
-      //   timeInEvents: [],
-      //   timeOutEvents: []
-      // };
-//       return employeeObj;
-//     });
-//   }
-
-  // array.map(() => {
-    // array.forEach(element => {
-    //   firstName = element[0]
-    //   familyName = element[1]
-    //   title = element[2]
-    //   payPerHour = element[3]
-
-
-    // });
-    // const firstName = array[0][0]
-    // // const familyName = array[1]
-    // console.log(firstName)
-  // })
 
 
 
